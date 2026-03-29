@@ -7,8 +7,16 @@
 <meta name="description" content="KöniglichMoments: Einzigartige Retreat-Erlebnisse im Luxus-Chalet DasKöniglich in Mühlbach am Hochkönig. Kunst, Natur, Wellness & mehr.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
+  @font-face {
+    font-family: 'Amsterdam Four';
+    src: url('amsterdam-four.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
   :root {
     --gold: #c9a84c;
     --gold-light: #e2cc8a;
@@ -23,14 +31,20 @@
 
   body {
     font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
     background: var(--dark);
     color: var(--white);
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3, h4 {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 400;
+  h1, h2, h3 {
+    font-family: 'Amsterdam Four', cursive;
+    font-weight: normal;
+  }
+
+  h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
   }
 
   img { display: block; width: 100%; }
@@ -84,25 +98,26 @@
   }
 
   .hero h1 {
-    font-size: clamp(3rem, 8vw, 6rem);
-    font-weight: 300;
-    line-height: 1.05;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    font-weight: normal;
+    line-height: 1.1;
     margin-bottom: 0.5rem;
   }
 
   .hero h1 em {
-    font-style: italic;
+    font-style: normal;
     color: var(--gold-light);
   }
 
   .hero-subtitle {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 300;
-    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-    color: #ccc;
-    margin-top: 1rem;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: #aaa;
+    margin-top: 1.5rem;
     max-width: 600px;
+    letter-spacing: 0.5px;
+    line-height: 1.8;
   }
 
   .hero-scroll {
@@ -153,8 +168,8 @@
   }
 
   .section-heading {
-    font-size: clamp(2rem, 4vw, 3.2rem);
-    line-height: 1.15;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    line-height: 1.2;
     margin-bottom: 2rem;
   }
 
@@ -248,8 +263,8 @@
   }
 
   .moment-card h3 {
-    font-size: 1.8rem;
-    font-weight: 300;
+    font-size: 2.2rem;
+    font-weight: normal;
     line-height: 1.15;
     margin-bottom: 0.8rem;
   }
@@ -313,7 +328,7 @@
 
   .moment-card.coming-soon h3 {
     color: rgba(255,255,255,0.3);
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
 
   .moment-card.coming-soon p {
@@ -385,15 +400,15 @@
   }
 
   .footer-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem;
-    font-weight: 300;
+    font-family: 'Amsterdam Four', cursive;
+    font-size: 1.6rem;
+    font-weight: normal;
     color: rgba(255,255,255,0.4);
     margin-bottom: 1rem;
   }
 
   .footer-logo em {
-    font-style: italic;
+    font-style: normal;
     color: var(--gold);
     opacity: 0.6;
   }
@@ -527,7 +542,7 @@
   <div class="section-inner fade-in">
     <div class="location-split">
       <div class="location-img">
-        <img src="https://static.wixstatic.com/media/c39f11_1e3caec65fa44ff49521945998255656~mv2.jpg/v1/fit/w_1200,h_1200,q_90/c39f11_1e3caec65fa44ff49521945998255656~mv2.jpg" alt="DasKöniglich Interieur">
+        <img src="https://static.wixstatic.com/media/c39f11_4653ee4c380e471aaf75c22fd871fad0~mv2.jpg/v1/fill/w_1200,h_800,al_c,q_85/c39f11_4653ee4c380e471aaf75c22fd871fad0~mv2.jpg" alt="DasKöniglich Chalet Außenansicht">
       </div>
       <div class="location-text">
         <div class="section-label">Die Location</div>
