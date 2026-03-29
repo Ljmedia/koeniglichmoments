@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KöniglichMoments — Exklusive Erlebnisse im DasKöniglich</title>
+<meta name="description" content="KöniglichMoments: Einzigartige Retreat-Erlebnisse im Luxus-Chalet DasKöniglich in Mühlbach am Hochkönig. Kunst, Natur, Wellness & mehr.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #e2cc8a;
+    --dark: #1a1a1a;
+    --dark-soft: #2a2a2a;
+    --cream: #f5f0e8;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--dark);
+    color: var(--white);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+  }
+
+  img { display: block; width: 100%; }
+  a { text-decoration: none; }
+
+  /* === HERO === */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 650px;
+    overflow: hidden;
+  }
+
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+    filter: brightness(0.45);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(26,26,26,0) 0%,
+      rgba(26,26,26,0) 50%,
+      rgba(26,26,26,0.5) 70%,
+      rgba(26,26,26,0.95) 95%,
+      rgba(26,26,26,1) 100%
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .hero-brand {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 0.7rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 300;
+    line-height: 1.05;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    color: #ccc;
+    margin-top: 1rem;
+    max-width: 600px;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .hero-scroll .line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(201,168,76,0.5), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  /* === SECTIONS === */
+  section { overflow: hidden; }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+
+  .section-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 0.65rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .section-heading {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.15;
+    margin-bottom: 2rem;
+  }
+
+  /* === INTRO === */
+  .intro { background: var(--dark); }
+
+  .intro-content {
+    max-width: 750px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .intro p {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: #bbb;
+    font-weight: 300;
+  }
+
+  .intro strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .intro .section-label,
+  .intro .section-heading {
+    text-align: center;
+  }
+
+  /* === MOMENTS GRID === */
+  .moments { background: var(--dark-soft); }
+
+  .moments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .moment-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    min-height: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: transform 0.4s ease;
+    cursor: pointer;
+  }
+
+  .moment-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .moment-card-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    filter: brightness(0.5);
+  }
+
+  .moment-card:hover .moment-card-bg {
+    transform: scale(1.05);
+    filter: brightness(0.6);
+  }
+
+  .moment-card-content {
+    position: relative;
+    z-index: 2;
+    padding: 2.5rem;
+    background: linear-gradient(
+      to top,
+      rgba(26,26,26,0.95) 0%,
+      rgba(26,26,26,0.7) 50%,
+      transparent 100%
+    );
+  }
+
+  .moment-card-tag {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 0.6rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+
+  .moment-card h3 {
+    font-size: 1.8rem;
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 0.8rem;
+  }
+
+  .moment-card p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #ccc;
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+  }
+
+  .moment-card .card-link {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .moment-card:hover .card-link {
+    color: var(--white);
+  }
+
+  .card-link .arrow {
+    display: inline-block;
+    transition: transform 0.3s;
+  }
+
+  .moment-card:hover .card-link .arrow {
+    transform: translateX(5px);
+  }
+
+  /* Coming Soon Card */
+  .moment-card.coming-soon {
+    cursor: default;
+    border: 1px solid rgba(201,168,76,0.15);
+    background: var(--dark);
+    min-height: 480px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .moment-card.coming-soon:hover {
+    transform: none;
+  }
+
+  .coming-soon-inner {
+    padding: 3rem;
+  }
+
+  .coming-soon-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 1.5rem;
+    opacity: 0.3;
+  }
+
+  .moment-card.coming-soon h3 {
+    color: rgba(255,255,255,0.3);
+    font-size: 1.5rem;
+  }
+
+  .moment-card.coming-soon p {
+    color: rgba(255,255,255,0.15);
+    font-size: 0.85rem;
+  }
+
+  /* === LOCATION === */
+  .location {
+    background: var(--dark);
+  }
+
+  .location-split {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .location-img {
+    flex: 1;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .location-img img {
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .location-text {
+    flex: 1;
+  }
+
+  .location-text p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #bbb;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+
+  .location-text strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .location-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--gold);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .location-link:hover { color: var(--white); }
+
+  /* === FOOTER === */
+  footer {
+    background: var(--dark);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    text-align: center;
+    padding: 3rem 2rem;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 1rem;
+  }
+
+  .footer-logo em {
+    font-style: italic;
+    color: var(--gold);
+    opacity: 0.6;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .footer-links a {
+    color: var(--gold);
+    font-size: 0.8rem;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: var(--white); }
+
+  .footer-copy {
+    font-size: 0.75rem;
+    color: #555;
+  }
+
+  /* === ANIMATIONS === */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 900px) {
+    .moments-grid {
+      grid-template-columns: 1fr;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .location-split {
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .location-img img {
+      height: 280px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-img" src="https://static.wixstatic.com/media/c39f11_4653ee4c380e471aaf75c22fd871fad0~mv2.jpg/v1/fill/w_1920,h_1280,al_c,q_85/c39f11_4653ee4c380e471aaf75c22fd871fad0~mv2.jpg" alt="DasKöniglich Chalet">
+  <div class="hero-overlay">
+    <div class="hero-brand">DasKöniglich präsentiert</div>
+    <h1>Königlich<em>Moments</em></h1>
+    <div class="hero-subtitle">Exklusive Erlebnisse in den Alpen — Kunst, Natur & Genuss im Luxus-Chalet am Hochkönig</div>
+  </div>
+  <div class="hero-scroll">
+    <div class="line"></div>
+    Entdecken
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="section-inner fade-in">
+    <div class="intro-content">
+      <div class="section-label">Die Idee</div>
+      <h2 class="section-heading">Momente, die bleiben</h2>
+      <p>
+        <strong>KöniglichMoments</strong> steht für handverlesene Erlebnisse im
+        exklusiven Rahmen des <strong>DasKöniglich</strong> — einem 330 m² Luxus-Chalet
+        in Mühlbach am Hochkönig. Jedes Moment ist ein einzigartiges Retreat,
+        kuratiert von ausgewählten Experten: Kunst, Kulinarik, Wellness oder Abenteuer.
+        Kleine Gruppen, persönliche Betreuung, unvergessliche Erinnerungen.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- MOMENTS -->
+<section class="moments">
+  <div class="section-inner">
+    <div class="section-label fade-in">Unsere Erlebnisse</div>
+    <h2 class="section-heading fade-in">Wähle dein Moment</h2>
+
+    <div class="moments-grid">
+
+      <!-- ACTIVE: Private Art Retreat -->
+      <a href="https://www.privateartretreat.com" class="moment-card fade-in">
+        <img class="moment-card-bg" src="https://static.wixstatic.com/media/5c1eb8_549de6097fb049f4944bfd6a4e6fabf4~mv2.jpg" alt="Private Art Retreat">
+        <div class="moment-card-content">
+          <div class="moment-card-tag">Kunst-Retreat</div>
+          <h3>Private<br>Art Retreat</h3>
+          <p>Exklusive Kunstkurse mit Nadia Schreiner. Acryl auf Leinwand, alle Materialien inkludiert. Erschaffe dein eigenes Meisterwerk in den Alpen.</p>
+          <span class="card-link">Entdecken <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+      <!-- COMING SOON: Placeholder 1 -->
+      <div class="moment-card coming-soon fade-in">
+        <div class="coming-soon-inner">
+          <svg class="coming-soon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <h3>Neues Moment</h3>
+          <p>Weitere exklusive Erlebnisse folgen in Kürze.</p>
+        </div>
+      </div>
+
+      <!-- COMING SOON: Placeholder 2 -->
+      <div class="moment-card coming-soon fade-in">
+        <div class="coming-soon-inner">
+          <svg class="coming-soon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <h3>Neues Moment</h3>
+          <p>Weitere exklusive Erlebnisse folgen in Kürze.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location">
+  <div class="section-inner fade-in">
+    <div class="location-split">
+      <div class="location-img">
+        <img src="https://static.wixstatic.com/media/c39f11_1e3caec65fa44ff49521945998255656~mv2.jpg/v1/fit/w_1200,h_1200,q_90/c39f11_1e3caec65fa44ff49521945998255656~mv2.jpg" alt="DasKöniglich Interieur">
+      </div>
+      <div class="location-text">
+        <div class="section-label">Die Location</div>
+        <h2 class="section-heading">DasKöniglich</h2>
+        <p>
+          Alle KöniglichMoments finden statt im <strong>DasKöniglich</strong> —
+          einem exklusiven Luxus-Chalet mit 5 Schlafzimmern, Panorama-Sauna,
+          High-End-Küche und 160 m² Terrassen mit atemberaubendem Blick
+          auf die Bergwelt des Hochkönig in Mühlbach, Salzburger Land.
+        </p>
+        <a href="https://www.daskoeniglich.at" target="_blank" class="location-link">
+          daskoeniglich.at <span>→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Königlich<em>Moments</em></div>
+  <div class="footer-links">
+    <a href="https://www.daskoeniglich.at" target="_blank">daskoeniglich.at</a>
+    <a href="https://www.privateartretreat.com" target="_blank">privateartretreat.com</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 KöniglichMoments. Ein Erlebnis von DasKöniglich. Alle Rechte vorbehalten.</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
