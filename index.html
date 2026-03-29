@@ -495,6 +495,53 @@
     transform: translateY(0);
   }
 
+  /* === LANGUAGE TOGGLE === */
+  .lang-toggle {
+    position: fixed;
+    top: 1.2rem;
+    right: 2rem;
+    z-index: 200;
+    display: flex;
+    gap: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+  }
+
+  .lang-toggle button {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.4);
+    padding: 0.4rem 0.7rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+  }
+
+  .lang-toggle button:first-child {
+    border-radius: 3px 0 0 3px;
+    border-right: none;
+  }
+
+  .lang-toggle button:last-child {
+    border-radius: 0 3px 3px 0;
+  }
+
+  .lang-toggle button.active {
+    background: rgba(201,168,76,0.15);
+    border-color: rgba(201,168,76,0.4);
+    color: var(--gold);
+  }
+
+  .lang-toggle button:hover:not(.active) {
+    color: var(--white);
+    border-color: rgba(255,255,255,0.3);
+  }
+
   /* === RESPONSIVE === */
   @media (max-width: 900px) {
     .moments-grid {
@@ -515,17 +562,23 @@
 </head>
 <body>
 
+<!-- LANGUAGE TOGGLE -->
+<div class="lang-toggle">
+  <button id="btn-de" class="active" onclick="setLang('de')">DE</button>
+  <button id="btn-en" onclick="setLang('en')">EN</button>
+</div>
+
 <!-- HERO -->
 <section class="hero">
   <img class="hero-img" src="https://static.wixstatic.com/media/c39f11_4653ee4c380e471aaf75c22fd871fad0~mv2.jpg/v1/fill/w_1920,h_1280,al_c,q_85/c39f11_4653ee4c380e471aaf75c22fd871fad0~mv2.jpg" alt="DasKöniglich Chalet">
   <div class="hero-overlay">
-    <div class="hero-brand">DasKöniglich präsentiert</div>
+    <div class="hero-brand" data-i18n="heroBrand">DasKöniglich präsentiert</div>
     <h1>Königlich<br><em>Moments</em></h1>
-    <div class="hero-subtitle">Exklusive Erlebnisse in den Alpen — Kunst, Natur & Genuss im Luxus-Chalet am Hochkönig</div>
+    <div class="hero-subtitle" data-i18n="heroSubtitle">Exklusive Erlebnisse in den Alpen — Kunst, Natur & Genuss im Luxus-Chalet am Hochkönig</div>
   </div>
   <div class="hero-scroll">
     <div class="line"></div>
-    Entdecken
+    <span data-i18n="heroScroll">Entdecken</span>
   </div>
 </section>
 
@@ -533,15 +586,9 @@
 <section class="intro">
   <div class="section-inner fade-in">
     <div class="intro-content">
-      <div class="section-label">Die Idee</div>
-      <h2 class="section-heading">Momente, <em>die bleiben</em></h2>
-      <p>
-        <strong>KöniglichMoments</strong> steht für handverlesene Erlebnisse im
-        exklusiven Rahmen des <strong>DasKöniglich</strong> — einem 330 m² Luxus-Chalet
-        in Mühlbach am Hochkönig. Jedes Moment ist ein einzigartiges Retreat,
-        kuratiert von ausgewählten Experten: Kunst, Kulinarik, Wellness oder Abenteuer.
-        Kleine Gruppen, persönliche Betreuung, unvergessliche Erinnerungen.
-      </p>
+      <div class="section-label" data-i18n="introLabel">Die Idee</div>
+      <h2 class="section-heading" data-i18n="introHeading">Momente, <em>die bleiben</em></h2>
+      <p data-i18n="introText"><strong>KöniglichMoments</strong> steht für handverlesene Erlebnisse im exklusiven Rahmen des <strong>DasKöniglich</strong> — einem 330 m² Luxus-Chalet in Mühlbach am Hochkönig. Jedes Moment ist ein einzigartiges Retreat, kuratiert von ausgewählten Experten: Kunst, Kulinarik, Wellness oder Abenteuer. Kleine Gruppen, persönliche Betreuung, unvergessliche Erinnerungen.</p>
     </div>
   </div>
 </section>
@@ -549,37 +596,34 @@
 <!-- MOMENTS -->
 <section class="moments">
   <div class="section-inner">
-    <div class="section-label fade-in">Unsere Erlebnisse</div>
-    <h2 class="section-heading fade-in">Wähle dein <em>Moment</em></h2>
+    <div class="section-label fade-in" data-i18n="momentsLabel">Unsere Erlebnisse</div>
+    <h2 class="section-heading fade-in" data-i18n="momentsHeading">Wähle dein <em>Moment</em></h2>
 
     <div class="moments-grid">
 
-      <!-- ACTIVE: Private Art Retreat -->
       <a href="https://www.privateartretreat.com" class="moment-card fade-in">
         <img class="moment-card-bg" src="https://static.wixstatic.com/media/5c1eb8_549de6097fb049f4944bfd6a4e6fabf4~mv2.jpg" alt="Private Art Retreat">
         <div class="moment-card-content">
-          <div class="moment-card-tag">Kunst-Retreat</div>
+          <div class="moment-card-tag" data-i18n="cardTag">Kunst-Retreat</div>
           <h3>Private<br><em>Art Retreat</em></h3>
-          <p>Exklusive Kunstkurse mit Nadia Schreiner. Acryl auf Leinwand, alle Materialien inkludiert. Erschaffe dein eigenes Meisterwerk in den Alpen.</p>
-          <span class="card-link">Entdecken <span class="arrow">→</span></span>
+          <p data-i18n="cardText">Exklusive Kunstkurse mit Nadia Schreiner. Acryl auf Leinwand, alle Materialien inkludiert. Erschaffe dein eigenes Meisterwerk in den Alpen.</p>
+          <span class="card-link" data-i18n="cardLink">Entdecken <span class="arrow">→</span></span>
         </div>
       </a>
 
-      <!-- COMING SOON: Placeholder 1 -->
       <div class="moment-card coming-soon fade-in">
         <div class="coming-soon-inner">
           <svg class="coming-soon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          <h3>Neues<br><em>Moment</em></h3>
-          <p>Weitere exklusive Erlebnisse folgen in Kürze.</p>
+          <h3 data-i18n="comingSoonTitle">Neues<br><em>Moment</em></h3>
+          <p data-i18n="comingSoonText">Weitere exklusive Erlebnisse folgen in Kürze.</p>
         </div>
       </div>
 
-      <!-- COMING SOON: Placeholder 2 -->
       <div class="moment-card coming-soon fade-in">
         <div class="coming-soon-inner">
           <svg class="coming-soon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          <h3>Neues<br><em>Moment</em></h3>
-          <p>Weitere exklusive Erlebnisse folgen in Kürze.</p>
+          <h3 data-i18n="comingSoonTitle">Neues<br><em>Moment</em></h3>
+          <p data-i18n="comingSoonText">Weitere exklusive Erlebnisse folgen in Kürze.</p>
         </div>
       </div>
 
@@ -595,14 +639,9 @@
         <img src="chalet-exterior.png" alt="DasKöniglich Chalet Außenansicht" style="object-position: center 30%;">
       </div>
       <div class="location-text">
-        <div class="section-label">Die Location</div>
+        <div class="section-label" data-i18n="locationLabel">Die Location</div>
         <h2 class="section-heading">Das<em>Königlich</em></h2>
-        <p>
-          Alle KöniglichMoments finden statt im <strong>DasKöniglich</strong> —
-          einem exklusiven Luxus-Chalet mit 5 Schlafzimmern, Panorama-Sauna,
-          High-End-Küche und 160 m² Terrassen mit atemberaubendem Blick
-          auf die Bergwelt des Hochkönig in Mühlbach, Salzburger Land.
-        </p>
+        <p data-i18n="locationText">Alle KöniglichMoments finden statt im <strong>DasKöniglich</strong> — einem exklusiven Luxus-Chalet mit 5 Schlafzimmern, Panorama-Sauna, High-End-Küche und 160 m² Terrassen mit atemberaubendem Blick auf die Bergwelt des Hochkönig in Mühlbach, Salzburger Land.</p>
         <a href="https://www.daskoeniglich.at" target="_blank" class="location-link">
           daskoeniglich.at <span>→</span>
         </a>
@@ -617,10 +656,77 @@
   <div class="footer-links">
     <a href="https://www.daskoeniglich.at" target="_blank">daskoeniglich.at</a>
   </div>
-  <p class="footer-copy">&copy; 2026 KöniglichMoments. Ein Erlebnis von DasKöniglich. Alle Rechte vorbehalten.</p>
+  <p class="footer-copy" data-i18n="footerCopy">&copy; 2026 KöniglichMoments. Ein Erlebnis von DasKöniglich. Alle Rechte vorbehalten.</p>
 </footer>
 
+<!-- TRACKING: Vercel Web Analytics -->
+<script defer src="/_vercel/insights/script.js"></script>
+<!-- TRACKING: Google Analytics 4 (ersetze G-XXXXXXXXXX mit deiner Mess-ID) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
+<script>
+const translations = {
+  en: {
+    heroBrand: 'DasKöniglich presents',
+    heroSubtitle: 'Exclusive experiences in the Alps — Art, Nature & Indulgence in a luxury chalet at Hochkönig',
+    heroScroll: 'Discover',
+    introLabel: 'The Idea',
+    introHeading: 'Moments <em>that last</em>',
+    introText: '<strong>KöniglichMoments</strong> stands for handpicked experiences in the exclusive setting of <strong>DasKöniglich</strong> — a 330 m² luxury chalet in Mühlbach am Hochkönig. Each Moment is a unique retreat, curated by selected experts: Art, Culinary, Wellness or Adventure. Small groups, personal attention, unforgettable memories.',
+    momentsLabel: 'Our Experiences',
+    momentsHeading: 'Choose your <em>Moment</em>',
+    cardTag: 'Art Retreat',
+    cardText: 'Exclusive art workshops with Nadia Schreiner. Acrylic on canvas, all materials included. Create your own masterpiece in the Alps.',
+    cardLink: 'Discover <span class="arrow">→</span>',
+    comingSoonTitle: 'New<br><em>Moment</em>',
+    comingSoonText: 'More exclusive experiences coming soon.',
+    locationLabel: 'The Location',
+    locationText: 'All KöniglichMoments take place at <strong>DasKöniglich</strong> — an exclusive luxury chalet with 5 bedrooms, panoramic sauna, high-end kitchen and 160 m² terraces with breathtaking views of the Hochkönig mountains in Mühlbach, Salzburg.',
+    footerCopy: '&copy; 2026 KöniglichMoments. An experience by DasKöniglich. All rights reserved.'
+  },
+  de: {
+    heroBrand: 'DasKöniglich präsentiert',
+    heroSubtitle: 'Exklusive Erlebnisse in den Alpen — Kunst, Natur & Genuss im Luxus-Chalet am Hochkönig',
+    heroScroll: 'Entdecken',
+    introLabel: 'Die Idee',
+    introHeading: 'Momente, <em>die bleiben</em>',
+    introText: '<strong>KöniglichMoments</strong> steht für handverlesene Erlebnisse im exklusiven Rahmen des <strong>DasKöniglich</strong> — einem 330 m² Luxus-Chalet in Mühlbach am Hochkönig. Jedes Moment ist ein einzigartiges Retreat, kuratiert von ausgewählten Experten: Kunst, Kulinarik, Wellness oder Abenteuer. Kleine Gruppen, persönliche Betreuung, unvergessliche Erinnerungen.',
+    momentsLabel: 'Unsere Erlebnisse',
+    momentsHeading: 'Wähle dein <em>Moment</em>',
+    cardTag: 'Kunst-Retreat',
+    cardText: 'Exklusive Kunstkurse mit Nadia Schreiner. Acryl auf Leinwand, alle Materialien inkludiert. Erschaffe dein eigenes Meisterwerk in den Alpen.',
+    cardLink: 'Entdecken <span class="arrow">→</span>',
+    comingSoonTitle: 'Neues<br><em>Moment</em>',
+    comingSoonText: 'Weitere exklusive Erlebnisse folgen in Kürze.',
+    locationLabel: 'Die Location',
+    locationText: 'Alle KöniglichMoments finden statt im <strong>DasKöniglich</strong> — einem exklusiven Luxus-Chalet mit 5 Schlafzimmern, Panorama-Sauna, High-End-Küche und 160 m² Terrassen mit atemberaubendem Blick auf die Bergwelt des Hochkönig in Mühlbach, Salzburger Land.',
+    footerCopy: '&copy; 2026 KöniglichMoments. Ein Erlebnis von DasKöniglich. Alle Rechte vorbehalten.'
+  }
+};
+
+function setLang(lang) {
+  document.documentElement.lang = lang;
+  localStorage.setItem('km-lang', lang);
+  document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang][key]) el.innerHTML = translations[lang][key];
+  });
+}
+
+(function() {
+  const saved = localStorage.getItem('km-lang');
+  const lang = saved || (navigator.language.startsWith('de') ? 'de' : 'en');
+  setLang(lang);
+})();
+
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.15 });
